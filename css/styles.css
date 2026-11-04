@@ -621,6 +621,14 @@ p {
   padding: 12px 14px;
   width: 100%;
 }
+/* keep browser autofill from painting the fields pale */
+.form input:-webkit-autofill,
+.form input:-webkit-autofill:hover,
+.form input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--accent-ink);
+  box-shadow: inset 0 0 0 100px color-mix(in srgb, var(--accent-ink) 10%, var(--accent));
+  caret-color: var(--accent-ink);
+}
 .form textarea {
   min-height: 140px;
   resize: vertical;

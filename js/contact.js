@@ -32,8 +32,20 @@
         _template: "table",
       }),
     });
-    const body = await res.json();
-    if (!res.ok || body.success === "false") throw new Error(body.message || "Send failed");
+    const body = await res.json().catch(() => ({}));
+    if (!res.ok || String(body.success) === "false") throw new Error(body.message || "");
+  }
+
+  function explain(err) {
+    // FormSubmit only accepts submissions from a hosted page, not a file opened from disk
+    if (location.protocol === "file:") {
+      return "Messages can only be sent from the live site, not a local file.";
+    }
+    // first-ever submission: FormSubmit emails the owner an activation link instead of the message
+    if (/activat/i.test(err.message)) {
+      return "Almost there: this form is awaiting activation. Please try again soon, or reach me on LinkedIn.";
+    }
+    return "Couldn't send right now. Please reach me on LinkedIn.";
   }
 
   form.addEventListener("submit", async (e) => {
@@ -52,8 +64,9 @@
       await send(data);
       form.reset();
       say("Thanks! I'll get back to you soon.");
-    } catch {
-      say("Couldn't send right now. Please reach me on LinkedIn.");
+    } catch (err) {
+      console.warn("Contact form:", err.message || err);
+      say(explain(err));
     } finally {
       button.disabled = false;
     }
