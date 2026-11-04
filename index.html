@@ -1,0 +1,1211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="Mishalia Pillay, full-stack software engineer (C#, .NET, React, TypeScript) in Johannesburg. Builds production web software and AI-driven test automation."
+    />
+    <meta property="og:title" content="Mishalia Pillay · Full-stack Software Engineer" />
+    <meta
+      property="og:description"
+      content="C#/.NET + React/TypeScript engineer. Production web software, AI-driven Playwright testing, Azure and AWS."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <title>Mishalia Pillay · Full-stack Software Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,300..900&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+    <style>
+      /* Layout: full-bleed "turf" canvas hero with a stretched name, then a single 1100px column of ruled sections; cobalt is the only loud colour. */
+      :root {
+        --bg: #edeff4;
+        --surface: #ffffff;
+        --fg: #10131f;
+        --muted: #5a6075;
+        --line: #d3d7e2;
+        --accent: #1f3bff;
+        --accent-ink: #ffffff;
+        --tile: #dce0ea;
+        --f-display: "Anybody", "Arial Narrow", Impact, sans-serif;
+        --f-body:
+          "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+        --f-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #0a0d18;
+          --surface: #121729;
+          --fg: #e8ebf5;
+          --muted: #8c93ad;
+          --line: #232a42;
+          --accent: #5c74ff;
+          --accent-ink: #0a0d18;
+          --tile: #161c31;
+          color-scheme: dark;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #0a0d18;
+        --surface: #121729;
+        --fg: #e8ebf5;
+        --muted: #8c93ad;
+        --line: #232a42;
+        --accent: #5c74ff;
+        --accent-ink: #0a0d18;
+        --tile: #161c31;
+        color-scheme: dark;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        background: var(--bg);
+        color: var(--fg);
+        font-family: var(--f-body);
+        font-size: 17px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: inherit;
+      }
+      a:focus-visible,
+      button:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+        border-radius: 2px;
+      }
+      .wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding-left: max(16px, env(safe-area-inset-left, 0px));
+        padding-right: max(16px, env(safe-area-inset-right, 0px));
+      }
+
+      /* nav */
+      nav {
+        position: relative;
+        z-index: 2;
+      }
+      nav .wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-block: 22px;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .mark {
+        font-family: var(--f-display);
+        font-weight: 900;
+        font-variation-settings: "wdth" 150;
+        font-size: 20px;
+        text-decoration: none;
+        letter-spacing: -0.02em;
+      }
+      .mark span {
+        color: var(--accent);
+      }
+      nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 22px;
+        font-family: var(--f-mono);
+        font-size: 13px;
+      }
+      nav ul a {
+        text-decoration: none;
+        color: var(--muted);
+      }
+      nav ul a:hover {
+        color: var(--accent);
+      }
+      nav ul a.hire {
+        color: var(--accent);
+        font-weight: 500;
+      }
+
+      /* hero */
+      .hero {
+        position: relative;
+        overflow: hidden;
+        border-bottom: 1px solid var(--line);
+      }
+      #turf {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .hero .wrap {
+        position: relative;
+        z-index: 1;
+        padding-block: clamp(48px, 9vw, 110px) clamp(84px, 8vw, 104px);
+        pointer-events: none;
+      }
+      .hero .wrap a {
+        pointer-events: auto;
+      }
+      .eyebrow {
+        font-family: var(--f-mono);
+        font-size: 13px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .dot {
+        width: 9px;
+        height: 9px;
+        background: var(--accent);
+        display: inline-block;
+        animation: blink 1.6s steps(2) infinite;
+      }
+      @keyframes blink {
+        50% {
+          opacity: 0.2;
+        }
+      }
+      h1 {
+        font-family: var(--f-display);
+        font-weight: 900;
+        line-height: 0.82;
+        letter-spacing: -0.035em;
+        margin: 0.25em 0 0.3em;
+        /* fallback only; JS fits the name to the column width */
+        font-size: clamp(44px, 11.5vw, 140px);
+        text-transform: uppercase;
+      }
+      h1 .a,
+      h1 .b {
+        display: block;
+        width: max-content;
+        white-space: nowrap;
+      }
+      h1 .a {
+        font-variation-settings: "wdth" 150;
+      }
+      h1 .b {
+        font-variation-settings: "wdth" 60;
+        color: var(--accent);
+      }
+      /* each letter reacts to the cursor: line one thins out, line two stretches */
+      h1 .ch {
+        transition:
+          font-variation-settings 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+          color 0.35s;
+      }
+      .a .ch {
+        font-variation-settings: "wdth" 150, "wght" 900;
+      }
+      .b .ch {
+        font-variation-settings: "wdth" 60, "wght" 900;
+      }
+      .lede {
+        font-size: clamp(19px, 2.3vw, 24px);
+        line-height: 1.45;
+        max-width: 30ch;
+        text-wrap: balance;
+        margin: 0 0 28px;
+        background: color-mix(in srgb, var(--bg) 70%, transparent);
+        backdrop-filter: blur(2px);
+      }
+      .cta {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .btn {
+        font-family: var(--f-mono);
+        font-size: 14px;
+        text-decoration: none;
+        padding: 13px 18px;
+        border: 1.5px solid var(--fg);
+        background: var(--bg);
+        display: inline-flex;
+        gap: 10px;
+        align-items: center;
+        transition:
+          transform 0.15s,
+          background 0.15s,
+          color 0.15s;
+      }
+      .btn.primary {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: var(--accent-ink);
+      }
+      .btn:hover {
+        transform: translate(-3px, -3px);
+        box-shadow: 3px 3px 0 var(--fg);
+      }
+      /* pixel-paint toolbar */
+      .tools {
+        position: absolute;
+        right: max(16px, env(safe-area-inset-right, 0px));
+        bottom: 16px;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px;
+        background: color-mix(in srgb, var(--surface) 88%, transparent);
+        border: 1px solid var(--line);
+        backdrop-filter: blur(4px);
+        font-family: var(--f-mono);
+        font-size: 11px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .tools-hint {
+        color: var(--muted);
+        padding: 0 6px;
+      }
+      .sw {
+        width: 22px;
+        height: 22px;
+        padding: 0;
+        border: 1.5px solid var(--line);
+        background: var(--c);
+        cursor: pointer;
+        transition: transform 0.15s;
+      }
+      .sw:hover {
+        transform: translateY(-2px);
+      }
+      .sw[aria-pressed="true"] {
+        outline: 2px solid var(--fg);
+        outline-offset: 2px;
+      }
+      .sw.er {
+        background: var(--surface);
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1;
+      }
+      .tb {
+        font: inherit;
+        background: none;
+        border: 1px solid var(--line);
+        color: var(--fg);
+        padding: 4px 8px;
+        cursor: pointer;
+      }
+      .tb:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .tools button:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+
+      /* sections */
+      section {
+        border-bottom: 1px solid var(--line);
+      }
+      section .wrap {
+        padding-block: clamp(56px, 8vw, 96px);
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: clamp(24px, 5vw, 64px);
+      }
+      section .wrap > * {
+        min-width: 0;
+      }
+      .label {
+        font-family: var(--f-mono);
+        font-size: 13px;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        padding-top: 10px;
+      }
+      .label b {
+        display: block;
+        color: var(--accent);
+        font-weight: 500;
+      }
+      h2 {
+        font-family: var(--f-display);
+        font-variation-settings: "wdth" 120;
+        font-weight: 800;
+        font-size: clamp(30px, 4.4vw, 48px);
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        margin: 0 0 20px;
+        text-wrap: balance;
+      }
+      p {
+        margin: 0 0 1em;
+        max-width: 62ch;
+      }
+      .muted {
+        color: var(--muted);
+      }
+
+      /* projects */
+      .projects {
+        display: grid;
+        gap: 0;
+        border-top: 1.5px solid var(--fg);
+      }
+      .proj {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 8px 24px;
+        padding: 26px 0;
+        border-bottom: 1px solid var(--line);
+        position: relative;
+      }
+      .proj h3 {
+        font-family: var(--f-display);
+        font-variation-settings: "wdth" 140;
+        font-weight: 800;
+        font-size: clamp(22px, 2.8vw, 30px);
+        margin: 0;
+        letter-spacing: -0.01em;
+        transition: color 0.2s;
+      }
+      .proj:hover h3 {
+        color: var(--accent);
+      }
+      .proj .kind {
+        font-family: var(--f-mono);
+        font-size: 12px;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        align-self: center;
+        text-align: right;
+      }
+      .proj p {
+        grid-column: 1/-1;
+        margin: 0;
+        color: var(--muted);
+      }
+      .proj ul {
+        grid-column: 1/-1;
+        margin: 4px 0 0;
+        padding-left: 20px;
+        color: var(--muted);
+        max-width: 62ch;
+        display: grid;
+        gap: 4px;
+      }
+      .proj li::marker {
+        color: var(--accent);
+      }
+      .proj .out {
+        color: var(--fg);
+        margin-top: 6px;
+      }
+      .proj .out b {
+        font-family: var(--f-mono);
+        font-size: 12px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--accent);
+        margin-right: 8px;
+      }
+
+      /* why me */
+      .why {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1px;
+        background: var(--line);
+        border: 1px solid var(--line);
+      }
+      .why > div {
+        background: var(--surface);
+        padding: 24px 22px;
+      }
+      .why .n {
+        font-family: var(--f-mono);
+        font-size: 12px;
+        color: var(--accent);
+      }
+      .why h3 {
+        font-family: var(--f-display);
+        font-variation-settings: "wdth" 120;
+        font-weight: 800;
+        font-size: 21px;
+        margin: 6px 0 8px;
+      }
+      .why p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 15px;
+      }
+      .tags {
+        grid-column: 1/-1;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 4px;
+      }
+      .tag {
+        font-family: var(--f-mono);
+        font-size: 12px;
+        padding: 3px 8px;
+        border: 1px solid var(--line);
+        background: var(--surface);
+      }
+
+      /* stack */
+      .stack {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1px;
+        background: var(--line);
+        border: 1px solid var(--line);
+        margin-top: 8px;
+      }
+      .stack div {
+        background: var(--surface);
+        padding: 18px 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .stack strong {
+        font-family: var(--f-display);
+        font-variation-settings: "wdth" 110;
+        font-weight: 700;
+        font-size: 20px;
+      }
+      .stack span {
+        font-family: var(--f-mono);
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      /* timeline */
+      .tl {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 22px;
+      }
+      .tl li {
+        display: grid;
+        grid-template-columns: 130px 1fr;
+        gap: 16px;
+      }
+      .tl time {
+        font-family: var(--f-mono);
+        font-size: 13px;
+        color: var(--accent);
+        padding-top: 3px;
+        font-variant-numeric: tabular-nums;
+      }
+      .tl h4 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 600;
+      }
+      .tl p {
+        margin: 2px 0 0;
+        color: var(--muted);
+        font-size: 15px;
+      }
+      .certs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
+      }
+      .cert {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+        border: 1.5px solid var(--fg);
+        background: var(--surface);
+      }
+      .cert .code {
+        font-family: var(--f-display);
+        font-weight: 900;
+        font-variation-settings: "wdth" 150;
+        font-size: 22px;
+        color: var(--accent);
+      }
+      .cert small {
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.3;
+      }
+
+      /* contact */
+      .contact {
+        background: var(--accent);
+        color: var(--accent-ink);
+        border-bottom: 0;
+      }
+      .contact .label,
+      .contact .label b,
+      .contact .muted {
+        color: inherit;
+        opacity: 0.8;
+      }
+      .contact h2 {
+        font-size: clamp(40px, 7vw, 84px);
+        font-variation-settings: "wdth" 150;
+        text-transform: uppercase;
+        line-height: 0.9;
+      }
+      .contact .btn {
+        border-color: var(--accent-ink);
+        background: transparent;
+        color: var(--accent-ink);
+      }
+      .contact .btn:hover {
+        box-shadow: 3px 3px 0 var(--accent-ink);
+      }
+      .form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin: 8px 0 28px;
+        max-width: 640px;
+      }
+      .form label {
+        display: grid;
+        gap: 6px;
+        font-family: var(--f-mono);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .form .full {
+        grid-column: 1/-1;
+      }
+      .form input,
+      .form textarea {
+        font: inherit;
+        font-family: var(--f-body);
+        font-size: 16px;
+        text-transform: none;
+        letter-spacing: 0;
+        color: var(--accent-ink);
+        background: color-mix(in srgb, var(--accent-ink) 10%, transparent);
+        border: 1.5px solid var(--accent-ink);
+        border-radius: 0;
+        padding: 12px 14px;
+        width: 100%;
+      }
+      .form textarea {
+        min-height: 140px;
+        resize: vertical;
+      }
+      .form input::placeholder,
+      .form textarea::placeholder {
+        color: var(--accent-ink);
+        opacity: 0.55;
+      }
+      .form input:focus-visible,
+      .form textarea:focus-visible {
+        outline: 2px solid var(--accent-ink);
+        outline-offset: 2px;
+      }
+      .form .hp {
+        position: absolute;
+        left: -9999px;
+      }
+      .form button {
+        cursor: pointer;
+        font: inherit;
+        font-family: var(--f-mono);
+        font-size: 14px;
+      }
+      .form button:disabled {
+        opacity: 0.6;
+        cursor: wait;
+      }
+      .form .status {
+        align-self: center;
+        margin: 0;
+        font-family: var(--f-mono);
+        font-size: 13px;
+      }
+      footer .wrap {
+        padding-block: 24px;
+        font-family: var(--f-mono);
+        font-size: 12px;
+        color: var(--muted);
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      @media (max-width: 720px) {
+        section .wrap {
+          grid-template-columns: 1fr;
+        }
+        .tl li {
+          grid-template-columns: 1fr;
+          gap: 2px;
+        }
+        nav ul {
+          gap: 14px;
+        }
+        .tools-hint,
+        .tb[data-act="save"] {
+          display: none;
+        }
+        .form {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="wrap">
+        <a class="mark" href="#top">M<span>.</span>PILLAY</a>
+        <ul>
+          <li><a href="#why">Why me</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#stack">Stack</a></li>
+          <li><a href="#path">Path</a></li>
+          <li>
+            <a
+              href="Mishalia_Pillay_CV_Updated_November_2026.pdf"
+              download="Mishalia_Pillay_CV.pdf"
+              >CV</a
+            >
+          </li>
+          <li><a class="hire" href="#contact">Hire me</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <header class="hero" id="top">
+      <canvas id="turf" aria-hidden="true"></canvas>
+      <div class="wrap">
+        <div class="eyebrow">
+          <i class="dot"></i>Full-stack engineer · Johannesburg · Open to hybrid &amp; relocation
+        </div>
+        <h1><span class="a">Mishalia</span><span class="b">Pillay</span></h1>
+        <p class="lede">
+          Full-stack engineer shipping production C#/.NET and React software,
+          plus the AI-driven testing that keeps it solid.
+        </p>
+        <div class="cta">
+          <a class="btn primary" href="#contact">Hire me →</a>
+          <a
+            class="btn"
+            href="Mishalia_Pillay_CV_Updated_November_2026.pdf"
+            download="Mishalia_Pillay_CV.pdf"
+            >Download CV ↓</a
+          >
+          <a class="btn" href="#work">See the work</a>
+          <a
+            class="btn"
+            href="https://www.linkedin.com/in/mishalia-pillay"
+            target="_blank"
+            rel="noopener"
+            >LinkedIn ↗</a
+          >
+        </div>
+      </div>
+      <div class="tools" role="toolbar" aria-label="Pixel paint">
+        <span class="tools-hint">Drag to paint</span>
+        <button class="sw" data-c="1" style="--c: var(--accent)" aria-label="Cobalt" aria-pressed="true"></button>
+        <button class="sw" data-c="2" style="--c: #ff5a4e" aria-label="Coral" aria-pressed="false"></button>
+        <button class="sw" data-c="3" style="--c: #c6f432" aria-label="Lime" aria-pressed="false"></button>
+        <button class="sw" data-c="4" style="--c: var(--fg)" aria-label="Ink" aria-pressed="false"></button>
+        <button class="sw er" data-c="0" aria-label="Eraser" aria-pressed="false">⌫</button>
+        <button class="tb" data-act="clear">Clear</button>
+        <button class="tb" data-act="save">Save PNG</button>
+      </div>
+    </header>
+
+    <section id="why">
+      <div class="wrap">
+        <div class="label"><b>Why me</b>What I bring</div>
+        <div>
+          <h2>An engineer who ships, raises the bar, and lifts the team.</h2>
+          <div class="why">
+            <div>
+              <span class="n">01</span>
+              <h3>End-to-end delivery</h3>
+              <p>
+                SQL Server schemas, .NET APIs, React interfaces. I own features
+                from the database to the pixel, not just my layer.
+              </p>
+            </div>
+            <div>
+              <span class="n">02</span>
+              <h3>Quality built in</h3>
+              <p>
+                I built an AI-driven Playwright testing framework so regressions
+                are caught on every run, not by users.
+              </p>
+            </div>
+            <div>
+              <span class="n">03</span>
+              <h3>Leadership early</h3>
+              <p>
+                I lead project delivery and mentor graduate developers through
+                their first production code.
+              </p>
+            </div>
+            <div>
+              <span class="n">04</span>
+              <h3>Design sense</h3>
+              <p>
+                A Digital Arts background means usable, accessible interfaces
+                that feel right, without a designer holding my hand.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="wrap">
+        <div class="label"><b>Work</b>Selected</div>
+        <div class="projects">
+          <article class="proj">
+            <h3>AI-driven automated testing</h3>
+            <span class="kind">Built from scratch</span>
+            <p>
+              Manual regression testing was slow, and only developers could
+              write automated tests. I built a framework that lets anyone write
+              a test as plain-language steps.
+            </p>
+            <ul>
+              <li>
+                AI turns each plan into a Playwright spec, recording real
+                selectors live against the running app.
+              </li>
+              <li>
+                Self-healing runs: when a selector breaks, AI repairs it and
+                re-runs; genuine failures are logged as bugs automatically.
+              </li>
+              <li>
+                Runs locally or on GitHub Actions, publishes Allure reports,
+                and alerts the team in Microsoft Teams.
+              </li>
+              <li>
+                Imports test cases straight from Azure DevOps, so QA, business
+                analysts and developers all contribute.
+              </li>
+            </ul>
+            <p class="out">
+              <b>Outcome</b> Wider test coverage, less manual regression, and
+              testing adopted across departments, not just engineering.
+            </p>
+            <div class="tags">
+              <span class="tag">Playwright</span
+              ><span class="tag">TypeScript</span
+              ><span class="tag">Claude Code</span
+              ><span class="tag">GitHub Actions</span
+              ><span class="tag">Allure</span
+              ><span class="tag">Azure DevOps</span>
+            </div>
+          </article>
+          <article class="proj">
+            <h3>Enterprise web platforms</h3>
+            <span class="kind">Lead engineer</span>
+            <p>
+              Production systems that organisations rely on every day, where
+              reliability and clarity matter more than novelty.
+            </p>
+            <ul>
+              <li>
+                Full-stack features across C#/.NET back ends and React +
+                TypeScript front ends.
+              </li>
+              <li>
+                Lead delivery on projects: scoping, breaking down work, and
+                getting it to production.
+              </li>
+              <li>
+                Mentor the graduate developer cohort through code reviews and
+                pairing.
+              </li>
+            </ul>
+            <div class="tags">
+              <span class="tag">C#</span><span class="tag">.NET</span
+              ><span class="tag">React</span><span class="tag">TypeScript</span
+              ><span class="tag">SQL Server</span>
+            </div>
+          </article>
+          <article class="proj">
+            <h3>Cloud contact centres</h3>
+            <span class="kind">Client delivery</span>
+            <p>
+              Designing and deploying Amazon Connect contact centres for
+              clients.
+            </p>
+            <ul>
+              <li>
+                Own the full path, from AWS account structure and Lambda
+                integrations through to go-live.
+              </li>
+              <li>
+                The go-to person on the team when AWS account structures get
+                complicated.
+              </li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Amazon Connect</span><span class="tag">AWS</span
+              ><span class="tag">Lambda</span
+              ><span class="tag">Cloud architecture</span>
+            </div>
+          </article>
+          <article class="proj">
+            <h3>AI-assisted engineering workflows</h3>
+            <span class="kind">Tooling</span>
+            <p>
+              Custom Claude Code skills that turn repeatable team tasks, from
+              scaffolding components to authoring tests, into one-command
+              workflows, so delivery gets faster without cutting corners.
+            </p>
+            <div class="tags">
+              <span class="tag">Claude Code</span
+              ><span class="tag">Agent skills</span
+              ><span class="tag">Automation</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="label"><b>About</b>Artist → engineer</div>
+        <div>
+          <h2>A Digital Arts degree, then production .NET and React.</h2>
+          <p>
+            I studied Digital Arts at Wits, which is why I care about how
+            software feels as much as how it runs. Today I'm a software engineer
+            at a software company, where I lead projects, mentor
+            graduate developers, build AI-driven test automation, and deploy
+            cloud contact centres.
+          </p>
+          <p class="muted">
+            I'm Azure-certified, comfortable across AWS, and quick to pick up
+            whatever a team runs on. I like small pull requests, clear tickets
+            and leaving code better than I found it.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="stack">
+      <div class="wrap">
+        <div class="label"><b>Stack</b>Daily drivers</div>
+        <div>
+          <h2>Comfortable from the database to the pixel.</h2>
+          <div class="stack">
+            <div><strong>C#</strong><span>back end</span></div>
+            <div><strong>.NET</strong><span>APIs · services</span></div>
+            <div><strong>React</strong><span>front end</span></div>
+            <div><strong>TypeScript</strong><span>everywhere</span></div>
+            <div><strong>SQL Server</strong><span>data</span></div>
+            <div><strong>Azure</strong><span>certified admin</span></div>
+            <div><strong>AWS</strong><span>Connect · accounts</span></div>
+            <div><strong>Claude Code</strong><span>AI workflows</span></div>
+            <div><strong>Playwright</strong><span>e2e testing</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="path">
+      <div class="wrap">
+        <div class="label"><b>Path</b>So far</div>
+        <div>
+          <ol class="tl">
+            <li>
+              <time>2025 – now</time>
+              <div>
+                <h4>Software Engineer</h4>
+                <p>
+                  Full-stack engineer and project lead. Built the team's
+                  AI-driven test automation, mentor graduate developers, and
+                  deliver AWS contact centres.
+                </p>
+              </div>
+            </li>
+            <li>
+              <time>2021 – 2024</time>
+              <div>
+                <h4>BA Digital Arts, University of the Witwatersrand</h4>
+                <p>
+                  Interaction, visual systems and making things people want to
+                  touch.
+                </p>
+              </div>
+            </li>
+          </ol>
+          <div class="certs">
+            <div class="cert">
+              <span class="code">AZ-104</span
+              ><small>Microsoft Certified<br />Azure Administrator</small>
+            </div>
+            <div class="cert">
+              <span class="code">AI-200</span
+              ><small>Microsoft<br />certification</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <div class="label"><b>Contact</b>Hybrid · will relocate</div>
+        <div>
+          <h2>Let's build something.</h2>
+          <p class="muted">
+            I'm open to full-stack, back-end and front-end engineering roles.
+            I'm based in Johannesburg, open to hybrid work, and happy to
+            relocate anywhere for the right role. Hiring? Send a message and it lands straight
+            in my inbox. I reply within a day or two.
+          </p>
+          <form class="form" id="contact-form" novalidate>
+            <label
+              >Name
+              <input name="name" autocomplete="name" required placeholder="Your name"
+            /></label>
+            <label
+              >Email
+              <input
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+                placeholder="you@company.com"
+            /></label>
+            <label class="full"
+              >Message
+              <textarea
+                name="message"
+                required
+                placeholder="What would you like to build?"
+              ></textarea>
+            </label>
+            <input class="hp" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <button class="btn" type="submit">Send message →</button>
+            <p class="status" role="status" aria-live="polite"></p>
+          </form>
+          <div class="cta">
+            <a
+              class="btn"
+              href="Mishalia_Pillay_CV_Updated_November_2026.pdf"
+              download="Mishalia_Pillay_CV.pdf"
+              >Download CV ↓</a
+            >
+            <a
+              class="btn"
+              href="https://www.linkedin.com/in/mishalia-pillay"
+              target="_blank"
+              rel="noopener"
+              >linkedin.com/in/mishalia-pillay ↗</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <span>© 2026 Mishalia Pillay</span
+        ><span>Built by hand · no templates</span>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        const c = document.getElementById("turf"),
+          x = c.getContext("2d");
+        const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+        let W,
+          H,
+          S = 34,
+          cols,
+          rows,
+          cells = [],
+          dpr = Math.min(devicePixelRatio || 1, 2),
+          tileCol,
+          accCol;
+        function colors() {
+          const s = getComputedStyle(document.documentElement);
+          tileCol = s.getPropertyValue("--tile").trim();
+          accCol = s.getPropertyValue("--accent").trim();
+        }
+        function size() {
+          const r = c.getBoundingClientRect();
+          W = r.width;
+          H = r.height;
+          c.width = W * dpr;
+          c.height = H * dpr;
+          x.setTransform(dpr, 0, 0, dpr, 0, 0);
+          S = W < 600 ? 26 : 34;
+          cols = Math.ceil(W / S) + 1;
+          rows = Math.ceil(H / S) + 1;
+          cells = new Float32Array(cols * rows);
+          // seed a few claimed territories so the hero is alive at rest
+          for (let k = 0; k < 5; k++) {
+            const cx = Math.floor(Math.random() * cols),
+              cy = Math.floor(Math.random() * rows);
+            for (let i = -2; i <= 2; i++)
+              for (let j = -2; j <= 2; j++) {
+                const a = cx + i,
+                  b = cy + j;
+                if (
+                  a >= 0 &&
+                  b >= 0 &&
+                  a < cols &&
+                  b < rows &&
+                  Math.random() > 0.35
+                )
+                  cells[b * cols + a] = 0.25 + Math.random() * 0.35;
+              }
+          }
+          colors();
+          draw();
+        }
+        function draw() {
+          x.clearRect(0, 0, W, H);
+          for (let j = 0; j < rows; j++)
+            for (let i = 0; i < cols; i++) {
+              const v = cells[j * cols + i];
+              x.globalAlpha = 1;
+              x.fillStyle = tileCol;
+              x.fillRect(i * S + 1, j * S + 1, S - 2, S - 2);
+              if (v > 0.01) {
+                x.globalAlpha = Math.min(v, 1);
+                x.fillStyle = accCol;
+                x.fillRect(i * S + 1, j * S + 1, S - 2, S - 2);
+              }
+            }
+          x.globalAlpha = 1;
+        }
+        function loop() {
+          let any = false;
+          for (let k = 0; k < cells.length; k++) {
+            if (cells[k] > 0.2) {
+              cells[k] -= 0.004;
+              any = true;
+            }
+          }
+          draw();
+          requestAnimationFrame(loop);
+        }
+        function claim(e) {
+          const r = c.getBoundingClientRect();
+          const p = e.touches ? e.touches[0] : e;
+          const i = Math.floor((p.clientX - r.left) / S),
+            j = Math.floor((p.clientY - r.top) / S);
+          for (let a = -1; a <= 1; a++)
+            for (let b = -1; b <= 1; b++) {
+              const ii = i + a,
+                jj = j + b;
+              if (ii >= 0 && jj >= 0 && ii < cols && jj < rows) {
+                const k = jj * cols + ii;
+                cells[k] = Math.max(cells[k], a || b ? 0.55 : 1);
+              }
+            }
+          if (reduce) draw();
+        }
+        const hero = c.parentElement;
+        hero.addEventListener("pointermove", claim);
+        hero.addEventListener("touchmove", claim, { passive: true });
+        addEventListener("resize", size);
+        matchMedia("(prefers-color-scheme: dark)").addEventListener(
+          "change",
+          () => {
+            colors();
+            draw();
+          },
+        );
+        new MutationObserver(() => {
+          colors();
+          draw();
+        }).observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ["data-theme"],
+        });
+        size();
+        if (!reduce) loop();
+      })();
+
+      // Contact form: FormSubmit (free, no account) forwards submissions to this inbox.
+      (function () {
+        const TO = "YOUR_EMAIL@example.com";
+        const f = document.getElementById("contact-form"),
+          btn = f.querySelector("button"),
+          status = f.querySelector(".status");
+        f.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          if (!f.checkValidity()) {
+            status.textContent = "Please fill in every field with a valid email.";
+            return;
+          }
+          const d = Object.fromEntries(new FormData(f));
+          if (d._honey) return; // bot filled the hidden field
+          btn.disabled = true;
+          status.textContent = "Sending…";
+          try {
+            const r = await fetch("https://formsubmit.co/ajax/" + TO, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+              },
+              body: JSON.stringify({
+                name: d.name,
+                email: d.email,
+                message: d.message,
+                _replyto: d.email,
+                _subject: "Portfolio message from " + d.name,
+                _template: "table",
+              }),
+            });
+            const res = await r.json();
+            if (!r.ok || res.success === "false") throw new Error(res.message);
+            f.reset();
+            status.textContent = "Thanks! I'll get back to you soon.";
+          } catch (err) {
+            status.textContent =
+              "Couldn't send right now. Please reach me on LinkedIn.";
+          } finally {
+            btn.disabled = false;
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
